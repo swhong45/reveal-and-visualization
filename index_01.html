@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Syrup-Summary Report</title>
+		<title>Prototype - my interactive charts</title>
 
-		<meta name="description" content="Syrup Summary containing interactive charts">
+		<meta name="description" content="A prototype for presenting interactive charts included in the syrup report">
 		<meta name="author" content="Andy Sang Hong">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -14,21 +14,9 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/d3.v3.js"></script>
-   
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
-
-		<!-- full screen background image -->
-		<!-- <link rel="stylesheet" href="css/fullscreen-img.css"> -->
+		<link rel="stylesheet" href="css/fullscreen-img.css"> <!-- full screen background image -->
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -58,63 +46,10 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-background="img/book.jpg" data-background-size="cover">
+				<section fullscreen-img="img/cover_image.jpg" >
 					<h2>Syrup <small>- App Log Analysis</small></h2>
 					<h5>collection of interactive charts</h5>
 					<p>BI추진단 | BI그룹</p>
-				</section>
-
-
-				<section>
-					<section>
-						<h2>Insight 01.</h2>
-						<p class="lead text-primary"> <strong>메인 카드 페이지의 추천 카드 노출 영역</strong>이 카드 추가 페이지 내 추천 카드 영역에 비해 <strong>노출 영역당 클릭 방문 수가 높다</strong>.</p>
-					</section>
-
-					<section>
-						<div class="row">
-							<div class="col-md-6">
-								<img src="img/main_card_recommend.png" style="size:5%;" alt="left image">
-							</div>
-							<div class="col-md-6">
-								
-								<div id="test"></div>
-								<script type="text/javascript">
-									
-									var svg1 = d3.select("#test").append("svg");
-									svg1.attr("width", 500)
-										.attr("height", 600);
-									
-									svg1.append("image")
-										.attr("xlink:href", "img/main_card_recommend.png")
-										.attr("width", 400)
-										.attr("height", 600)
-										.attr("x", 50)
-										.attr("y", 0);
-
-									svg1.append("rect")
-										.attr("x", 40)
-										.attr("y", 380)
-										.attr("rx", 5)
-										.attr("ry", 5)
-										.attr("width", 420)
-										.attr("height", 150)
-										.attr("style", "fill:#81DAF5;opacity:0.2");
-
-									svg1.append("text")
-										.attr("x", 425)
-										.attr("y", 380)
-										.text("123456")
-										.attr("style", "fill:red;font-size:14pt");
-								</script>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<p>카드 추가 페이지 내 추천 멤버십 영역의 컨텐츠를 다양화하고 집중도를 높일 수 있는 방안 필요</p>
-					</section>
-					
 				</section>
 
 				<section>
