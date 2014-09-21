@@ -58,21 +58,129 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-<<<<<<< HEAD
-				<section data-background="img/book.jpg" data-background-size="cover">
-=======
-				<section fullscreen-img="img/book.jpg" >
->>>>>>> FETCH_HEAD
+
+				<section data-transition="linear" data-background="#555" data-background-transition="slide">
 					<h2>Syrup <small>- App Log Analysis</small></h2>
-					<h5>collection of interactive charts</h5>
+					<h5>Summary of Key Findings</h5>
 					<p>BI추진단 | BI그룹</p>
 				</section>
 
-
-				<section>
+				<section data-transition="linear" data-background-transition="slide">
+					
 					<section>
-						<h2>Insight 01.</h2>
-						<p class="lead text-primary"> <strong>메인 카드 페이지의 추천 카드 노출 영역</strong>이 카드 추가 페이지 내 추천 카드 영역에 비해 <strong>노출 영역당 클릭 방문 수가 높다</strong>.</p>
+						<h3 class="text-left">insight 01.</h3>
+						<p class="bg-info" style="padding:20px;">멤버십 카드 발급 페이지는 카드 추가 하위 페이지에서 주로 유입되고 있으며, 결제/상품권 카드 발급페이지는 메인 페이지의 추천 카드 영역에서 주로 유입되고 있음</p>
+						<!-- <div class="container-fluid"> 
+							<div class="row">
+								<div class="col-md-6"><img src="img/main_card_recommend.png" class="img-responsive img-rounded" alt=""></div>
+								<div class="col-md-6"><img src="img/main_card_recommend.png" class="img-responsive img-rounded" alt=""></div>
+							</div>
+						</div> -->
+					</section>
+						
+					<section>
+						<div class="container-fluid"> 
+							<div class="row">
+
+								<div class="col-md-8">
+									<div id="01_01"></div>
+									<script type="text/javascript">
+										
+										google.load('visualization', '1.1', {'packages':['sankey']});
+										google.setOnLoadCallback(drawChart_01_01);
+
+									   function drawChart_01_01() {
+									    var data_01_01 = new google.visualization.DataTable();
+									    data_01_01.addColumn('string', 'From');
+									    data_01_01.addColumn('string', 'To');
+									    data_01_01.addColumn('number', 'Weight');
+									    data_01_01.addRows([
+									       	[ '메인 - 카드', '멤버십 카드 발급 페이지', 596610],
+									       	[ '카드 추가 하위 페이지', '멤버십 카드 발급 페이지', 872503],
+									   		[ '검색 하위 페이지', '멤버십 카드 발급 페이지', 251137],
+									   		[ '무료 쿠폰 상세', '멤버십 카드 발급 페이지', 25580],
+									   		[ '공지 상세', '멤버십 카드 발급 페이지', 6940],
+									    ]);
+									    
+									    // Set chart options
+									    var options_01_01 = {
+									      height: 500,
+									      width: 600,
+									      sankey: {
+									        link: { color: { fill: '#777', fillOpacity: 0.5 } },
+									        node: { color: { fill: '#f0ad4e' },
+									                label: { color: '#333', fontSize:16, bold: true},
+									                width: 9 },
+									      }
+									    };
+
+									    // Instantiate and draw our chart, passing in some options.
+									    var chart_01_01 = new google.visualization.Sankey(document.getElementById('01_01'));
+									    chart_01_01.draw(data_01_01, options_01_01);
+									   }
+									</script>
+								</div> <!-- end of col1 -->
+
+								<div class="col-md-4">
+									<img src="img/main_card_recommend.png" class="img-responsive img-rounded"
+										style="border-width: 2pt;border-color: #A4A4A4;height:500"alt="">
+								</div> <!-- end of col2 -->
+
+							</div> <!-- end of row -->
+						</div> <!-- end of container-fluid -->				
+					</section>
+					
+
+					<section>
+
+						<div class="container-fluid"> 
+							<div class="row">
+								<div class="col-md-8">
+									<div id="chart_div"></div>
+								</div>
+								<div class="col-md-4"><img src="img/main_card_recommend.png" class="img-responsive img-rounded" style="border-width: 2pt;border-color: #A4A4A4;" alt=""></div>
+							</div>
+						</div>
+						
+						<script type="text/javascript">
+					      google.load("visualization", "1.1", {packages:["treemap"]});
+					      google.setOnLoadCallback(drawChart);
+					      function drawChart() {
+					        var data = google.visualization.arrayToDataTable([
+					          ['previous pages', 'current pages', 'num_sessions' , 'color_'],
+					          ['멤버십카드발급페이지',    null,                 0,                               0],
+					          ['메인-카드',   '멤버십카드발급페이지',             596610,                               596610],
+					          ['카드 추가 하위 페이지',    '멤버십카드발급페이지',             872503,                               872503],
+					          ['검색 하위 페이지',      '멤버십카드발급페이지',             251137,                               251137],
+					          ['무료 쿠폰 상세', '멤버십카드발급페이지',             25580,                               25580],
+					          ['공지 상세',    '멤버십카드발급페이지',             6940,                               6940],
+					        ]);
+
+					        tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
+
+					        tree.draw(data, {
+					          minColor: '#F6E3CE',
+					          midColor: '#F7BE81',
+					          maxColor: '#FE9A2E',
+					          headerHeight: 30,
+					          fontColor: '#222',
+					          showScale: true,
+					          height: 500
+					        });
+					      }
+					    </script>
+
+					</section>
+
+					<section>
+						<h3 class="text-left">insight 02.</h3>
+						<p class="bg-info" style="padding:20px;">메인 카드 페이지의 추천 카드 노출 영역이 카드 추가 페이지 내 추천 카드 영역에 비해 노출 영역당 클릭 방문 수가 높다.</p>
+						<!-- <div class="container-fluid"> 
+							<div class="row">
+								<div class="col-md-6"><img src="img/main_card_recommend.png" class="img-responsive img-rounded" alt=""></div>
+								<div class="col-md-6"><img src="img/main_card_recommend.png" class="img-responsive img-rounded" alt=""></div>
+							</div>
+						</div> -->
 					</section>
 
 					<section>
@@ -106,9 +214,9 @@
 										.attr("style", "fill:#81DAF5;opacity:0.2");
 
 									svg1.append("text")
-										.attr("x", 425)
-										.attr("y", 380)
-										.text("123456")
+										.attr("x", 415)
+										.attr("y", 435)
+										.text("136,426회 ")
 										.attr("style", "fill:red;font-size:14pt");
 								</script>
 							</div>
@@ -487,41 +595,7 @@ function linkify( selector ) {
 				</section>
 
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
 					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
 				</section>
 
 			</div>
