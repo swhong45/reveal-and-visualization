@@ -69,7 +69,7 @@
 					
 					<section>
 						<h3 class="text-left">insight 01.</h3>
-						<p class="bg-info" style="padding:20px;">멤버십 카드 발급 페이지는 카드 추가 하위 페이지에서 주로 유입되고 있으며, 결제/상품권 카드 발급페이지는 메인 페이지의 추천 카드 영역에서 주로 유입되고 있음</p>
+						<p class="bg-info" style="padding:20px;">멤버십 카드 발급 페이지는 카드 추가 하위 페이지에서 주로 유입되고 있음. 반면, 결제/상품권 카드 발급페이지는 메인 페이지의 추천 카드 영역에서 주로 유입되고 있음</p>
 						<!-- <div class="container-fluid"> 
 							<div class="row">
 								<div class="col-md-6"><img src="img/main_card_recommend.png" class="img-responsive img-rounded" alt=""></div>
@@ -122,7 +122,7 @@
 								</div> <!-- end of col1 -->
 
 								<div class="col-md-4">
-									<img src="img/main_card_recommend.png" class="img-responsive img-rounded"
+									<img src="img/issue_mcard.png" class="img-responsive img-rounded"
 										style="border-width: 2pt;border-color: #A4A4A4;height:500"alt="">
 								</div> <!-- end of col2 -->
 
@@ -138,7 +138,7 @@
 								<div class="col-md-8">
 									<div id="chart_div"></div>
 								</div>
-								<div class="col-md-4"><img src="img/main_card_recommend.png" class="img-responsive img-rounded" style="border-width: 2pt;border-color: #A4A4A4;" alt=""></div>
+								<div class="col-md-4"><img src="img/issue_mcard.png" class="img-responsive img-rounded" style="border-width: 2pt;border-color: #A4A4A4;" alt=""></div>
 							</div>
 						</div>
 						
@@ -148,12 +148,12 @@
 					      function drawChart() {
 					        var data = google.visualization.arrayToDataTable([
 					          ['previous pages', 'current pages', 'num_sessions' , 'color_'],
-					          ['멤버십카드발급페이지',    null,                 0,                               0],
-					          ['메인-카드',   '멤버십카드발급페이지',             596610,                               596610],
-					          ['카드 추가 하위 페이지',    '멤버십카드발급페이지',             872503,                               872503],
-					          ['검색 하위 페이지',      '멤버십카드발급페이지',             251137,                               251137],
-					          ['무료 쿠폰 상세', '멤버십카드발급페이지',             25580,                               25580],
-					          ['공지 상세',    '멤버십카드발급페이지',             6940,                               6940],
+					          ['멤버십카드발급페이지',	null,	0,	0],
+					          ['메인-카드',	'멤버십카드발급페이지',	596610,	596610],
+					          ['카드 추가 하위 페이지',	'멤버십카드발급페이지',	872503,	872503],
+					          ['검색 하위 페이지',	'멤버십카드발급페이지',	251137,	251137],
+					          ['무료 쿠폰 상세',	'멤버십카드발급페이지',	25580,	25580],
+					          ['공지 상세',	'멤버십카드발급페이지',	6940,	6940],
 					        ]);
 
 					        tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
@@ -164,7 +164,48 @@
 					          maxColor: '#FE9A2E',
 					          headerHeight: 30,
 					          fontColor: '#222',
-					          showScale: true,
+					          // showScale: true,
+					          height: 500
+					        });
+					      }
+					    </script>
+
+					</section>
+
+					<section>
+
+						<div class="container-fluid"> 
+							<div class="row">
+								<div class="col-md-8">
+									<div id="chart_div_02"></div>
+								</div>
+								<div class="col-md-4"><img src="img/issue_pcard.png" class="img-responsive img-rounded" style="border-width: 2pt;border-color: #A4A4A4;" alt=""></div>
+							</div>
+						</div>
+						
+						<script type="text/javascript">
+					      google.load("visualization", "1.1", {packages:["treemap"]});
+					      google.setOnLoadCallback(drawChart);
+					      function drawChart() {
+					        var data = google.visualization.arrayToDataTable([
+					          ['previous pages', 'current pages', 'num_sessions' , 'color_'],
+					          ['결제 상품권 카드 발급 페이지',	null,	0,	0],
+					          ['메인-카드',	'결제 상품권 카드 발급 페이지',	156061,	156061],
+					          ['카드 추가 하위 페이지',	'결제 상품권 카드 발급 페이지',	27728,	27728],
+					          ['검색 하위 페이지',	'결제 상품권 카드 발급 페이지',	24884,	24884],
+					          ['무료 쿠폰 상세',	'결제 상품권 카드 발급 페이지',	68,	68],
+					          ['이벤트 상세',	'결제 상품권 카드 발급 페이지',	463,	463],
+					        ]);
+
+					        tree = new google.visualization.TreeMap(document.getElementById('chart_div_02'));
+
+					        tree.draw(data, {
+					          minColor: '#F6E3CE',
+					          midColor: '#F7BE81',
+					          maxColor: '#FE9A2E',
+					          headerHeight: 30,
+					          fontColor: '#222',
+					          // showScale: true,
 					          height: 500
 					        });
 					      }
@@ -186,9 +227,6 @@
 					<section>
 						<div class="row">
 							<div class="col-md-6">
-								<img src="img/main_card_recommend.png" style="size:5%;" alt="left image">
-							</div>
-							<div class="col-md-6">
 								
 								<div id="test"></div>
 								<script type="text/javascript">
@@ -202,23 +240,58 @@
 										.attr("width", 400)
 										.attr("height", 600)
 										.attr("x", 50)
-										.attr("y", 0);
+										.attr("y", 0)
+										.attr("style", "border-width: 2pt;border-color: #A4A4A4;");
 
 									svg1.append("rect")
-										.attr("x", 40)
+										.attr("x", 60)
 										.attr("y", 380)
 										.attr("rx", 5)
 										.attr("ry", 5)
-										.attr("width", 420)
-										.attr("height", 150)
+										.attr("width", 400)
+										.attr("height", 80)
 										.attr("style", "fill:#81DAF5;opacity:0.2");
 
 									svg1.append("text")
 										.attr("x", 415)
 										.attr("y", 435)
-										.text("136,426회 ")
+										.text("136,426회")
 										.attr("style", "fill:red;font-size:14pt");
 								</script>
+							</div>
+							<div class="col-md-6">
+								
+								<div id="test02"></div>
+								
+								<script type="text/javascript">
+									
+									var svg2 = d3.select("#test02").append("svg");
+									svg2.attr("width", 500)
+										.attr("height", 600);
+									
+									svg2.append("image")
+										.attr("xlink:href", "img/issue_card_main.png")
+										.attr("width", 400)
+										.attr("height", 600)
+										.attr("x", 50)
+										.attr("y", 0);
+
+									svg2.append("rect")
+										.attr("x", 300)
+										.attr("y", 250)
+										.attr("rx", 5)
+										.attr("ry", 5)
+										.attr("width", 130)
+										.attr("height", 140)
+										.attr("style", "fill:#81DAF5;opacity:0.2");
+
+									svg2.append("text")
+										.attr("x", 425)
+										.attr("y", 360)
+										.text("78,607회")
+										.attr("style", "fill:red;font-size:14pt");
+								</script>
+								
 							</div>
 						</div>
 					</section>
