@@ -59,12 +59,14 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
+				<!-- title slide -->
 				<section data-transition="linear" data-background="#555" data-background-transition="slide">
 					<h2>Syrup <small>- App Log Analysis</small></h2>
 					<h5>Summary of Key Findings</h5>
 					<p>BI추진단 | BI그룹</p>
 				</section>
 
+				<!-- insight 01 -->
 				<section data-transition="linear" data-background-transition="slide">
 					
 					<section>
@@ -214,6 +216,13 @@
 					</section>
 
 					<section>
+						<p class="bg-primary" style="padding:30px;"> 결제, 상품권 카드의 발급율을 높이기 위해서는  추천 카드 영역내 적극적 노출을 통한 발급 유인을 강화할 필요가 있음 </p>
+					</section>
+				</section>
+
+				<!-- insight 02 -->
+				<section>
+					<section>
 						<h3 class="text-left">insight 02.</h3>
 						<p class="bg-info" style="padding:20px;">메인 카드 페이지의 추천 카드 노출 영역이 카드 추가 페이지 내 추천 카드 영역에 비해 노출 영역당 클릭 방문 수가 높다.</p>
 						<!-- <div class="container-fluid"> 
@@ -297,11 +306,11 @@
 					</section>
 
 					<section>
-						<p>카드 추가 페이지 내 추천 멤버십 영역의 컨텐츠를 다양화하고 집중도를 높일 수 있는 방안 필요</p>
+						<p class="bg-primary" style="padding:20px;">카드 추가 페이지 - 추천 멤버십 영역의 컨텐츠를 다양화하고 고객의 집중도를 높일 수 있는 방안이 필요함</p>
 					</section>
-					
 				</section>
 
+				<!-- annotation chart test -->
 				<section>
 					<h3>Key Indicator #1 <br>
 						<small>1인당 멤버십 카드 및 지불 결제 카드 보유 수</small>
@@ -373,38 +382,7 @@
 					</script>
 				</section>
 
-				<section>
-					<section>
-						<h3>Activity Indicators</h3>
-						<ul>
-							<li>1-1 전체 멤버십 수 대비 고객 발급 멤버십 비율</li>
-							<li>1-2</li>
-							<li>1-3</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>1-1 전체 멤버십 수 대비 고객 발급 멤버십 비율</h3>
-					</section>
-
-					<section>
-						<h3>1-2</h3>	
-					</section>
-					
-					<section>
-						<h3>1-3</h3>
-					</section>
-
-					<section>
-						<h3>1-4</h3>
-					</section>
-
-					<section>
-						<h3>1-5</h3>
-					</section>
-			
-				</section>
-
+				<!-- Pie chart test	 -->
 				<section>
 					<h2>Pie chart</h2>
 					<p>
@@ -451,6 +429,7 @@
 				    </script>
 				</section>
 
+				<!-- sankey chart test -->
 				<section>
 					<h2>sankey chart</h2>
 					<p>
@@ -486,157 +465,9 @@
 					    chart_02.draw(data_02, options_02);
 					   }
 					</script>
-				
 				</section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-						Reveal.addEventListener( 'customevent', function() {
-							console.log( '"customevent" has fired' );
-						} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
+				<!-- fragment -->
 				<section>
 					<section id="fragments">
 						<h2>Fragmented Views</h2>
