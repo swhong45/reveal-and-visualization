@@ -80,59 +80,7 @@
 						</div> -->
 					</section>
 						
-					<section>
-						<div class="container-fluid"> 
-							<div class="row">
-
-								<div class="col-md-8">
-									<div id="01_01"></div>
-									<script type="text/javascript">
-										
-										google.load('visualization', '1.1', {'packages':['sankey']});
-										google.setOnLoadCallback(drawChart_01_01);
-
-									   function drawChart_01_01() {
-									    var data_01_01 = new google.visualization.DataTable();
-									    data_01_01.addColumn('string', 'From');
-									    data_01_01.addColumn('string', 'To');
-									    data_01_01.addColumn('number', 'Weight');
-									    data_01_01.addRows([
-									       	[ '메인 - 카드', '멤버십 카드 발급 페이지', 596610],
-									       	[ '카드 추가 하위 페이지', '멤버십 카드 발급 페이지', 872503],
-									   		[ '검색 하위 페이지', '멤버십 카드 발급 페이지', 251137],
-									   		[ '무료 쿠폰 상세', '멤버십 카드 발급 페이지', 25580],
-									   		[ '공지 상세', '멤버십 카드 발급 페이지', 6940],
-									    ]);
-									    
-									    // Set chart options
-									    var options_01_01 = {
-									      height: 500,
-									      width: 600,
-									      sankey: {
-									        link: { color: { fill: '#777', fillOpacity: 0.5 } },
-									        node: { color: { fill: '#f0ad4e' },
-									                label: { color: '#333', fontSize:16, bold: true},
-									                width: 9 },
-									      }
-									    };
-
-									    // Instantiate and draw our chart, passing in some options.
-									    var chart_01_01 = new google.visualization.Sankey(document.getElementById('01_01'));
-									    chart_01_01.draw(data_01_01, options_01_01);
-									   }
-									</script>
-								</div> <!-- end of col1 -->
-
-								<div class="col-md-4">
-									<img src="img/issue_mcard.png" class="img-responsive img-rounded"
-										style="border-width: 2pt;border-color: #A4A4A4;height:500"alt="">
-								</div> <!-- end of col2 -->
-
-							</div> <!-- end of row -->
-						</div> <!-- end of container-fluid -->				
-					</section>
-					
-
+					<!-- Treemap Chart 01 -->
 					<section>
 
 						<div class="container-fluid"> 
@@ -174,6 +122,7 @@
 
 					</section>
 
+					<!-- Treemap Chart 02 -->
 					<section>
 
 						<div class="container-fluid"> 
@@ -215,15 +164,16 @@
 
 					</section>
 
+					<!-- suggestion 01 -->
 					<section>
 						<p class="bg-primary" style="padding:30px;"> 결제, 상품권 카드의 발급율을 높이기 위해서는  추천 카드 영역내 적극적 노출을 통한 발급 유인을 강화할 필요가 있음 </p>
 					</section>
 				</section>
 
-				<!-- insight 02 -->
+				<!-- insight 03 -->
 				<section>
 					<section>
-						<h3 class="text-left">insight 02.</h3>
+						<h3 class="text-left">insight 03.</h3>
 						<p class="bg-info" style="padding:20px;">메인 카드 페이지의 추천 카드 노출 영역이 카드 추가 페이지 내 추천 카드 영역에 비해 노출 영역당 클릭 방문 수가 높다.</p>
 						<!-- <div class="container-fluid"> 
 							<div class="row">
@@ -233,6 +183,7 @@
 						</div> -->
 					</section>
 
+					<!-- d3. showing screens and numbers -->
 					<section>
 						<div class="row">
 							<div class="col-md-6">
@@ -305,6 +256,7 @@
 						</div>
 					</section>
 
+					<!-- suggestion 02 -->
 					<section>
 						<p class="bg-primary" style="padding:20px;">카드 추가 페이지 - 추천 멤버십 영역의 컨텐츠를 다양화하고 고객의 집중도를 높일 수 있는 방안이 필요함</p>
 					</section>
@@ -431,41 +383,57 @@
 
 				<!-- sankey chart test -->
 				<section>
-					<h2>sankey chart</h2>
-					<p>
-						test sankey chart
-					</p>
+						<div class="container-fluid"> 
+							<div class="row">
 
-					<div id="sankey_basic" style="width: 900px; height: 300px;"></div>
-					<script type="text/javascript">
-						
-						google.load('visualization', '1.1', {'packages':['sankey']});
-						google.setOnLoadCallback(drawChart_02);
+								<div class="col-md-8">
+									<div id="01_01"></div>
+									<script type="text/javascript">
+										
+										google.load('visualization', '1.1', {'packages':['sankey']});
+										google.setOnLoadCallback(drawChart_01_01);
 
-					   function drawChart_02() {
-					    var data_02 = new google.visualization.DataTable();
-					    data_02.addColumn('string', 'From');
-					    data_02.addColumn('string', 'To');
-					    data_02.addColumn('number', 'Weight');
-					    data_02.addRows([
-					       	[ '/detail/mcard', '/relatedcoupons', 2.48 ],
-					       	[ '/detail/mcard', '/others1', 8.52 ],
-					   		[ '/detail/mcard', '/others2', 4.52 ],
-					   		[ '/detail/mcard11', '/others3', 5.52 ],
-					   		[ '/detail/mcard11', '/others4', 7.52 ],
-					    ]);
-					    
-					    // Set chart options
-					    var options_02 = {
-					      width: 600,
-					    };
+									   function drawChart_01_01() {
+									    var data_01_01 = new google.visualization.DataTable();
+									    data_01_01.addColumn('string', 'From');
+									    data_01_01.addColumn('string', 'To');
+									    data_01_01.addColumn('number', 'Weight');
+									    data_01_01.addRows([
+									       	[ '메인 - 카드', '멤버십 카드 발급 페이지', 596610],
+									       	[ '카드 추가 하위 페이지', '멤버십 카드 발급 페이지', 872503],
+									   		[ '검색 하위 페이지', '멤버십 카드 발급 페이지', 251137],
+									   		[ '무료 쿠폰 상세', '멤버십 카드 발급 페이지', 25580],
+									   		[ '공지 상세', '멤버십 카드 발급 페이지', 6940],
+									    ]);
+									    
+									    // Set chart options
+									    var options_01_01 = {
+									      height: 500,
+									      width: 600,
+									      sankey: {
+									        link: { color: { fill: '#777', fillOpacity: 0.5 } },
+									        node: { color: { fill: '#f0ad4e' },
+									                label: { color: '#333', fontSize:16, bold: true},
+									                width: 9 },
+									      }
+									    };
 
-					    // Instantiate and draw our chart, passing in some options.
-					    var chart_02 = new google.visualization.Sankey(document.getElementById('sankey_basic'));
-					    chart_02.draw(data_02, options_02);
-					   }
-					</script>
-				</section>
+									    // Instantiate and draw our chart, passing in some options.
+									    var chart_01_01 = new google.visualization.Sankey(document.getElementById('01_01'));
+									    chart_01_01.draw(data_01_01, options_01_01);
+									   }
+									</script>
+								</div> <!-- end of col1 -->
+
+								<div class="col-md-4">
+									<img src="img/issue_mcard.png" class="img-responsive img-rounded"
+										style="border-width: 2pt;border-color: #A4A4A4;height:500"alt="">
+								</div> <!-- end of col2 -->
+
+							</div> <!-- end of row -->
+						</div> <!-- end of container-fluid -->				
+					</section>
+
 
 				<!-- fragment -->
 				<section>
