@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 .DS_Store
 .svn
 log/*.log
 tmp/**
 node_modules/
 .sass-cache
+=======
+
+sftp-config.json
+
+sftp-config.json
+>>>>>>> FETCH_HEAD
+
+sftp-config.json
