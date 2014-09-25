@@ -63,6 +63,26 @@
 				<section data-transition="linear" data-background="#555" data-background-transition="slide">
 					<h2>Syrup <small>- App Log Analysis</small></h2>
 					<h5>Summary of Key Findings</h5>
+					<svg viewBox="328 355 335 276" >
+						  <path d="
+						    M 630, 425
+						    A 195, 195 0 0 1 331, 600
+						    A 142, 142 0 0 0 428, 570
+						    A  70,  70 0 0 1 370, 523
+						    A  70,  70 0 0 0 401, 521
+						    A  70,  70 0 0 1 344, 455
+						    A  70,  70 0 0 0 372, 460
+						    A  70,  70 0 0 1 354, 370
+						    A 195, 195 0 0 0 495, 442
+						    A  67,  67 0 0 1 611, 380
+						    A 117, 117 0 0 0 654, 363
+						    A  65,  65 0 0 1 623, 401
+						    A 117, 117 0 0 0 662, 390
+						    A  65,  65 0 0 1 630, 425
+						    Z"
+						    style="fill:#3BA9EE;"/>
+
+						</svg>
 					<p>BI추진단 | BI그룹</p>
 				</section>
 
@@ -434,6 +454,56 @@
 						</div> <!-- end of container-fluid -->				
 					</section>
 
+
+				<section id="pathtest">
+					<p> d3 path test </p>
+					<script>
+						var canvas = d3.select("#pathtest").append("svg")
+							.attr("width", 500)
+							.attr("height", 500);
+
+						var data = [
+							{x:10, y:20, ea:0.5},
+							{x:40, y:60, ea:0.7},
+							{x:50, y:70, ea:1.0},
+							{x:200, y:150, ea:1.5},
+							{x:200, y:10, ea:2.0}
+						];
+
+						var group = canvas.append("g")
+							.attr("transform", "translate(100,100)");
+						
+						var line = d3.svg.line()
+							.x(function(d) {return d.x})
+							.y(function(d) {return d.y});
+
+						group.selectAll("path")
+							.data([data])
+							.enter()
+								.append("path")
+								.attr("d", line) //line generator
+								.attr("fill", "none")
+								.attr("stroke", "black")
+								.attr("stroke-width", 10);
+
+						var arc = d3.svg.arc()
+							.innerRadius (80)
+							.outerRadius (100)
+							.startAngle (0)
+							.endAngle (Math.PI*1.5);
+
+						var arcGroup = canvas.append("g")
+							.attr("transform", "translate(300,100)");
+
+						arcGroup.selectAll("path")
+							.data([data])
+							.enter()
+								.append("path")
+								.attr("d", arc);
+
+					</script>
+
+				</section>
 
 				<!-- fragment -->
 				<section>
