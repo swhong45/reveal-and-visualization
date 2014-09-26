@@ -16,6 +16,7 @@
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/d3.v3.js"></script>
+		<script type="text/javascript" src="js/sankey.js"></script>
    
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -401,7 +402,7 @@
 				    </script>
 				</section>
 
-				<!-- sankey chart test -->
+				<!-- Google Chart : sankey chart test -->
 				<section>
 						<div class="container-fluid"> 
 							<div class="row">
@@ -452,16 +453,16 @@
 
 							</div> <!-- end of row -->
 						</div> <!-- end of container-fluid -->				
-					</section>
+				</section>
 
-				<!-- d3 test -->
+				<!-- d3 pie layout test : ok!! -->
 				<section id="pie_layout">
 					<p> d3 pie layout test </p>
 					<script>
-						var data = [10, 30, 80];
+						var data = [10, 5, 20, 25, 30, 50];
 						var r = 200;
 
-						var color = d3.scale.ordinal()
+						var color_01 = d3.scale.ordinal()
 							.range(["#FFCC80", "#FFB84D", "#FF9900"]);
 
 						var canvas = d3.select("#pie_layout").append("svg")
@@ -486,7 +487,8 @@
 
 						arcs.append("path")
 							.attr("d", arc)
-							.attr("fill", function(d) {return color(d.data);});
+							.attr("fill", function(d) {return color_01(d.data);})
+							.attr("stroke", "white");
 
 						arcs.append("text")
 							.attr("transform", function(d){return "translate("+arc.centroid(d)+")";})
@@ -495,7 +497,127 @@
 							.attr("text-anchor", "middle");
 
 					</script>
+				</section>
 
+
+				<!-- d3 sankey layout test : give up! -->
+				<section id="d3sankey">
+					<p>d3 sankey test</p>
+					<script>
+						var margin = {top: 1, right: 1, bottom: 6, left: 1},
+						    width = 960 - margin.left - margin.right,
+						    height = 500 - margin.top - margin.bottom;
+
+						var formatNumber = d3.format(",.0f"),
+						    format = function(d) { return formatNumber(d) + " TWh"; },
+						    color = d3.scale.category20();
+
+						var svg = d3.select("#d3sankey").append("svg")
+						    .attr("width", width + margin.left + margin.right)
+						    .attr("height", height + margin.top + margin.bottom)
+						  .append("g")
+						    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+						var sankey = d3.sankey()
+						    .nodeWidth(15)
+						    .nodePadding(10)
+						    .size([400, 400]);
+
+						var path = sankey.link();
+
+						d3.json("data/01_sankey.json", function(energy) {
+
+						  sankey
+						      .nodes(energy.nodes)
+						      .links(energy.links)
+						      .layout(5);
+
+						  var link = svg.append("g").selectAll(".link")
+						      .data(energy.links)
+						    .enter().append("path")
+						      .attr("class", "link")
+						      .attr("d", path)
+						      .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+						      .sort(function(a, b) { return b.dy - a.dy; });
+
+						  link.append("text")
+						      .text(function(d) { return d.source.name + " → " + d.target.name + "\n" + format(d.value); });
+
+						  var node = svg.append("g").selectAll(".node")
+						      .data(energy.nodes)
+						    .enter().append("g")
+						      .attr("class", "node")
+						      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+						    .call(d3.behavior.drag()
+						      .origin(function(d) { return d; })
+						      .on("dragstart", function() { this.parentNode.appendChild(this); })
+						      .on("drag", dragmove));
+
+						  node.append("rect")
+						      .attr("height", function(d) { return d.dy; })
+						      .attr("width", sankey.nodeWidth())
+						      .style("fill", function(d) { return d.color = color(d.name.replace(/ .*/, "")); })
+						      .style("stroke", function(d) { return d3.rgb(d.color).darker(2); })
+						    .append("title")
+						      .text(function(d) { return d.name + "\n" + format(d.value); });
+
+						  node.append("text")
+						      .attr("x", -6)
+						      .attr("y", function(d) { return d.dy / 2; })
+						      .attr("dy", ".35em")
+						      .attr("text-anchor", "end")
+						      .attr("transform", null)
+						      .text(function(d) { return d.name; })
+						    .filter(function(d) { return d.x < width / 2; })
+						      .attr("x", 6 + sankey.nodeWidth())
+						      .attr("text-anchor", "start");
+
+
+						  function dragmove(d) {
+						    d3.select(this).attr("transform", "translate(" + d.x + "," + (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) + ")");
+						    sankey.relayout();
+						    link.attr("d", path);
+						  };
+
+						  });
+
+					</script>
+				</section>	
+
+				<!-- d3 diagonal test -->
+				<section id="diag_test">
+					<script>
+						var canvas = d3.select("#diag_test").append("svg")
+							.attr("width", 500)
+							.attr("height", 500);
+
+						var group = canvas.append("g")
+							.attr("transform", "translate(200,200)");
+
+						var diagonal = d3.svg.diagonal()
+							.source({x:10, y:10})
+							.target({x:150, y:150});
+
+						group.append("path")
+							.attr("d", diagonal)
+							.attr("fill", "none")
+							.attr("stroke", "red")
+							.attr("stroke-width", 4);
+
+						group.append("circle")
+							.attr("cx", 10)
+							.attr("cy", 10)
+							.attr("r", 5)
+							.attr("fill", "blue");
+
+						group.append("circle")
+							.attr("cx", 150)
+							.attr("cy", 150)
+							.attr("r", 5)
+							.attr("fill", "green");
+
+
+					</script>
 				</section>
 
 				<!-- fragment -->

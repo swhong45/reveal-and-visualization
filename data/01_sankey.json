@@ -1,0 +1,15 @@
+{"nodes":[
+{"name":"멤버십 카드 발급 페이지"},
+{"name":"메인 - 카드"},
+{"name":"카드 추가 하위 페이지"},
+{"name":"검색 하위 페이지"},
+{"name":"무료 쿠폰 상세"},
+{"name":"공지 상세"}
+],
+"links":[
+{"source":1,"target":0,"value":596610},
+{"source":2,"target":0,"value":872503},
+{"source":3,"target":0,"value":251137},
+{"source":4,"target":0,"value":25580},
+{"source":5,"target":0,"value":6940}
+]}
