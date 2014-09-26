@@ -454,52 +454,45 @@
 						</div> <!-- end of container-fluid -->				
 					</section>
 
-
-				<section id="pathtest">
-					<p> d3 path test </p>
+				<!-- d3 test -->
+				<section id="pie_layout">
+					<p> d3 pie layout test </p>
 					<script>
-						var canvas = d3.select("#pathtest").append("svg")
+						var data = [10, 30, 80];
+						var r = 200;
+
+						var color = d3.scale.ordinal()
+							.range(["#FFCC80", "#FFB84D", "#FF9900"]);
+
+						var canvas = d3.select("#pie_layout").append("svg")
 							.attr("width", 500)
 							.attr("height", 500);
 
-						var data = [
-							{x:10, y:20, ea:0.5},
-							{x:40, y:60, ea:0.7},
-							{x:50, y:70, ea:1.0},
-							{x:200, y:150, ea:1.5},
-							{x:200, y:10, ea:2.0}
-						];
-
 						var group = canvas.append("g")
-							.attr("transform", "translate(100,100)");
-						
-						var line = d3.svg.line()
-							.x(function(d) {return d.x})
-							.y(function(d) {return d.y});
-
-						group.selectAll("path")
-							.data([data])
-							.enter()
-								.append("path")
-								.attr("d", line) //line generator
-								.attr("fill", "none")
-								.attr("stroke", "black")
-								.attr("stroke-width", 10);
+							.attr("transform", "translate(250,230)");
 
 						var arc = d3.svg.arc()
-							.innerRadius (80)
-							.outerRadius (100)
-							.startAngle (0)
-							.endAngle (Math.PI*1.5);
+							.innerRadius(r-100)
+							.outerRadius(r);
+						
+						var pie = d3.layout.pie()
+							.value (function(d){return d;});
 
-						var arcGroup = canvas.append("g")
-							.attr("transform", "translate(300,100)");
-
-						arcGroup.selectAll("path")
-							.data([data])
+						var arcs = group.selectAll(".arc")
+							.data(pie(data))
 							.enter()
-								.append("path")
-								.attr("d", arc);
+								.append("g")
+								.attr("class", "arc");
+
+						arcs.append("path")
+							.attr("d", arc)
+							.attr("fill", function(d) {return color(d.data);});
+
+						arcs.append("text")
+							.attr("transform", function(d){return "translate("+arc.centroid(d)+")";})
+							.text(function(d){return d.data;})
+							.attr("font-size", "1.0em")
+							.attr("text-anchor", "middle");
 
 					</script>
 
