@@ -586,37 +586,125 @@
 
 				<!-- d3 diagonal test -->
 				<section id="diag_test">
+					<!-- <p>diagonal test</p> -->
 					<script>
-						var canvas = d3.select("#diag_test").append("svg")
-							.attr("width", 500)
-							.attr("height", 500);
+						var img_width = 270,
+							width = 960,
+							height = 560,
+							translate_dist = {x:20, y:20};
 
-						var group = canvas.append("g")
-							.attr("transform", "translate(200,200)");
+						var canvas = d3.select("#diag_test").append("svg")
+							.attr("width", width)
+							.attr("height", height)
+								.append("g")
+								.attr("transform", "translate(translate_dist.x,translate_dist.y)");
+
+						canvas.append("rect")
+							.attr("width", width - translate_dist.x)
+							.attr("height", height - translate_dist.y)
+							.attr("style", "fill:none;stroke:blue;stroke-width:1;stroke-opacity:0.6;");
+
+						canvas.append("image")
+							.attr("xlink:href", "img/issue_mcard.png")
+							.attr("width", img_width)
+							.attr("height", img_width*1.6)
+							.attr("x", 150)
+							.attr("y", 30)
+							.attr("style", "border-width: 2pt;border-color: #A4A4A4;");
+
+						// group test
+						var lineGroup = canvas.append("g")
+							.attr("transform", "translate(20,80)");
+
+						var line_len = 110,
+							start = {x:20, y:30},
+							s_r = 20,
+							e_r = 10;
+						
+						lineGroup.append("circle")
+							.attr("cx", start.x)
+							.attr("cy", start.y)
+							.attr("r", s_r)
+							.attr("fill", "#C2EBFF");
+
+						lineGroup.append("circle")
+							.attr("cx", start.x + line_len)
+							.attr("cy", start.y)
+							.attr("r", e_r)
+							.attr("fill", "#C2EBFF");
 
 						var diagonal = d3.svg.diagonal()
-							.source({x:10, y:10})
-							.target({x:150, y:150});
+							.source({x:start.x, y:start.y})
+							.target({x:start.x + line_len, y:start.y});
 
-						group.append("path")
+						lineGroup.append("path")
 							.attr("d", diagonal)
 							.attr("fill", "none")
-							.attr("stroke", "red")
-							.attr("stroke-width", 4);
+							.attr("stroke", "#C2EBFF")
+							.attr("stroke-width", 10);
 
-						group.append("circle")
-							.attr("cx", 10)
-							.attr("cy", 10)
-							.attr("r", 5)
-							.attr("fill", "blue");
+						lineGroup.append("text")
+								.attr("x", start.x)
+								.attr("y", start.y*1.2)
+								.attr("style", "font-size:14pt;fill:black")
+								.attr("text-anchor", "middle")
+								.text("S");
+						
+						lineGroup.append("text")
+							.attr("x", (start.x + line_len)/1.5 )
+							.attr("y", start.y + 20)
+							.attr("style", "font-size:12pt;fill:#8A2E2E")
+							.attr("text-anchor", "middle")
+							.text("num_Visits")
+							.append("tspan")
+								.attr("x", (start.x + line_len)/1.5)
+								.attr("y", start.y + 40)
+								.text("3,380,821");
 
-						group.append("circle")
-							.attr("cx", 150)
-							.attr("cy", 150)
-							.attr("r", 5)
-							.attr("fill", "green");
+						// canvas.append("circle")
+						// 	.attr("cx", 30)
+						// 	.attr("cy", 80)
+						// 	.attr("r", 20)
+						// 	.attr("fill", "#C2EBFF");
 
+						// canvas.append("circle")
+						// 	.attr("cx", 150)
+						// 	.attr("cy", 80)
+						// 	.attr("r", 10)
+						// 	.attr("fill", "#C2EBFF");
 
+						// var diagonal = d3.svg.diagonal()
+						// 	.source({x:30, y:80})
+						// 	.target({x:150, y:80});
+
+						// canvas.append("path")
+						// 	.attr("d", diagonal)
+						// 	.attr("fill", "none")
+						// 	.attr("stroke", "#C2EBFF")
+						// 	.attr("stroke-width", 10);
+
+						// canvas.append("text")
+						// 		.attr("x", 30)
+						// 		.attr("y", 85)
+						// 		.attr("style", "font-size:14pt;fill:black")
+						// 		.attr("text-anchor", "middle")
+						// 		.text("S");
+						
+						// canvas.append("text")
+						// 	.attr("x", 90)
+						// 	.attr("y", 100)
+						// 	.attr("style", "font-size:12pt;fill:#8A2E2E")
+						// 	.attr("text-anchor", "middle")
+						// 	.text("num_Visits")
+						// 	.append("tspan")
+						// 		.attr("x", 90)
+						// 		.attr("y", 120)
+						// 		.text("3,380,821");
+
+						
+						
+
+						
 					</script>
 				</section>
 
@@ -688,10 +776,11 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'lib/js/fullscreen-img.js' },
 				]
 			});
 
 		</script>
+
+
 	</body>
 </html>
