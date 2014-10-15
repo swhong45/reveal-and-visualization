@@ -515,7 +515,7 @@
 					<section id="sub4_01">
 						<p>카드 추가 페이지 내 영역 별 클릭 방문 수</p>
 						<script>
-							function draw_sub4_01() {
+							var draw_sub4_01 = function () {
 								d3.csv("data/insight04.csv", function(data) {
 								
 									var width = 960, //full width of canvas
@@ -547,7 +547,54 @@
 											.attr("x", function(d, i) {return i*50 + 30;})
 											.attr("y", function(d, i) {return i*50;})
 											.attr("style", "font-size:14pt;fill:black")
-											.attr("text-anchor", "start");									
+											.attr("text-anchor", "start");
+
+									var tt = canvas.append("g")
+													.attr("transform", "translate(500, 50)");
+									tt.selectAll("g")
+										.data(data)
+										.enter()
+											.append("g").selectAll("text")
+												.data(function(d){return d3.values(d);})
+								    			.enter()
+											    	.append("text")
+											    		.text(function(d) {return d;})
+											    		.attr("x", 100)
+														.attr("y", function(d, i) {return i*50;});
+
+
+
+
+
+									// var table = canvas.append("g")
+									// 				.attr("transform", "translate(500, 50)")
+									// 				.append("table")
+									// 					.attr("class", "table");
+
+								 //    var thead = table.append("thead"),
+								 //        tbody = table.append("tbody");
+
+								 //    thead.append("text")
+								 //    	.text("here here");
+
+								 //    var columns = ["Action", "Clicks","Click_Visits"];
+								 //    // append the header row
+								 //    thead.append("tr")
+								 //        .selectAll("th")
+								 //        .data(columns)
+								 //        .enter()
+								 //        .append("th")
+								 //            .text(function(d) { return d; });
+
+								 //    var tr = tbody.selectAll("tr")
+								 //    	.data(data)
+								 //    	.enter()
+								 //    		.append("tr").selectAll("td")
+								 //    			.data(function(d){return [d.action, d.num_clicks, d.num_click_visits];})
+								 //    			.enter()
+									// 		    	.append("td")
+									// 		    		.text(function(d) {return d;});
+									
 								});
 							}
 
@@ -557,26 +604,6 @@
 							
 
 						</script>
-
-						<!-- google.load("visualization", "1.1", {packages:["table"]});
-							 google.setOnLoadCallback(drawTable);
-							 
-							 var table_data = new google.visualization.DataTable();
-							 		table_data.addColumn ('string', "Action");
-							 		table_data.addColumn ('string', "num_clicks");
-							 		table_data.addColumn ('string', "num_click_visits");
-						 		table_data.addRows(sub4_01_data.length);
-					 			
-					 			for (i=0;i<data.length;i++) {
-					 				table_data.setCell(i,0,sub4_01_data[i].action);
-					 				table_data.setCell(i,1,sub4_01_data[i].num_clicks);
-					 				table_data.setCell(i,2,sub4_01_data[i].num_click_visits);
-						 				console.log(sub4_01_data[i]);
-					 			};
-									
-
-							var table04 = new google.visualization.Table(document.getElementById('table_div'));
-							table04.draw(table_data, {showRowNumber: true}); -->
 
 					</section>
 					
